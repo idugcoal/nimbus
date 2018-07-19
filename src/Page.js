@@ -11,6 +11,7 @@ export default class Page extends React.Component {
   }
 
   componentWillMount() {
+    console.log(this.props)
     this.fetchPage(this.props);
   }
 

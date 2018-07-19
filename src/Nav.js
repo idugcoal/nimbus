@@ -1,60 +1,47 @@
 import React from 'react';
-import NotFound from './NotFound';
-import PrismicReact from 'prismic-reactjs';
+// import PrismicReact from 'prismic-reactjs';
+// import {Link, RichText, Date} from 'prismic-reactjs';
+import Prismic from 'prismic-javascript';
 
-// Declare your component
-export default class Page extends React.Component {
+export default class Nav extends React.Component {
 
   state = {
-    doc: null,
+    data: null,
     notFound: false,
   }
 
   componentWillMount() {
-    this.fetchPage(this.props);
+    this.fetchNavData();
   }
 
-  componentWillReceiveProps(props) {
-    this.fetchPage(props);
-  }
+  fetchNavData() {
+    const apiEndpoint = 'https://nimbus.cdn.prismic.io/api/v2';
 
-  componentDidUpdate() {
-    this.props.prismicCtx.toolbar();
-  }
-
-  fetchPage(props) {
-    if (props.prismicCtx) {
-      // We are using the function to get a document by its uid
-      return props.prismicCtx.api.getByUID('navigation', props.match.params.uid, {}, (err, doc) => {
-        if (doc) {
-          // We put the retrieved content in the state as a doc variable
-          this.setState({ doc });
-        } else {
-          // We changed the state to display error not found if no matched doc
-          this.setState({ notFound: !doc });
-        }
+    Prismic.api(apiEndpoint).then(api => {
+      api.query(
+        Prismic.Predicates.at('document.type', 'navigation'),
+      ).then(response => {
+        const data = response.results[0].data
+        this.setState({ data });
       });
-    }
-    return null;
+    });
   }
 
   render() {
-  if (this.state.doc) {
-    console.log(this.state.doc)
-    return (
-      <div data-wio-id={this.state.doc.id}>
-        {/* This is how to get an image into your template */}
-        <img alt="cover" src={this.state.doc.data.image.url} />
-        {/* This is how to insert a Rich Text field as plain text */}
-        <h1>{PrismicReact.RichText.asText(this.state.doc.data.title)}</h1>
-        {/* This is how to insert a Rich Text field into your template as html */}
-        {PrismicReact.RichText.render(this.state.doc.data.description, this.props.prismicCtx.linkResolver)}
-      </div>
-    );
-  } else if (this.state.notFound) {
-    return <NotFound />;
-  }
-  return <h1>Loading</h1>;
+    if (this.state.data) {
+      let links = [];
+      for (let i = 1; i <= 5; i += 1) {
+        links.push(this.state.data[`link${i}`].url)
+      }
+      return ( 
+        <ul>
+          {links.map(function(link, i){
+            return <li key={i}>{link}</li>;
+          })}
+        </ul>)
+    } else {
+      return <h1>working on stuff...</h1>
+    }
 }
 
 }

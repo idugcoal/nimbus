@@ -1,7 +1,7 @@
 import React from 'react';
 // import NotFound from './NotFound';
 // import PrismicReact from 'prismic-reactjs';
-
+import Nav from './Nav';
 import './Home.css';
 
 export default class Home extends React.Component {
@@ -41,12 +41,12 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="nav"></div>
-        <div class="titlebar"></div>
-        <div class="hero"></div>
-        <div class="blocks"></div>
-        <div class="footer"></div>
+      <div className="container">
+        <Nav className="nav"></Nav>
+        <div className="titlebar"></div>
+        <div className="hero"></div>
+        <div className="blocks"></div>
+        <div className="footer"></div>
       </div>
 
     );
