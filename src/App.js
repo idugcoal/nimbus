@@ -18,7 +18,7 @@ import './App.css';
 const App = (props) => (
   <Router>
     <Switch>
-      <Redirect exact from="/" to="/help"/>
+      <Redirect exact from="/" to="/home"/>
       <Route exact path="/help" component={Help} />
       <Route exact path="/home" render={routeProps => <Home {...routeProps} prismicCtx={props.prismicCtx} />} />
       <Route exact path="/preview" render={routeProps => <Preview {...routeProps} prismicCtx={props.prismicCtx} />} />
