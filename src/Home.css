@@ -2,8 +2,8 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 150px 1fr 1fr 1fr;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 140px 1fr 1fr 1fr;
   grid-template-areas:
     "nav titlebar"
     "nav hero"
@@ -19,6 +19,10 @@
 .titlebar {
   border: 1px solid black;
   grid-area: titlebar;
+ /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "tba tbb tbc tbd";*/
 }
 
 .hero {
@@ -35,3 +39,14 @@
   border: 1px solid black;
   grid-area: footer;
 }
+
+.tb1, .tb3 {
+  background-color: red;
+  grid-area: tba;
+}
+
+.tb2, .tb4 {
+  background-color: red;
+  grid-area: tbc;
+}
+

@@ -1,7 +1,6 @@
 import React from 'react';
-// import PrismicReact from 'prismic-reactjs';
-// import {Link, RichText, Date} from 'prismic-reactjs';
 import Prismic from 'prismic-javascript';
+import './App.css';
 
 export default class Nav extends React.Component {
 
@@ -27,18 +26,22 @@ export default class Nav extends React.Component {
     });
   }
 
+  renderLinks() {
+    let links = [];
+    for (let i = 1; i <= 5; i += 1) {
+      links.push(this.state.data[`link${i}`].url);
+    }
+    return ( 
+      <ul>
+        {links.map((link, i) => {
+          return <li key={i}>{link}</li>;
+        })}
+      </ul>)
+  }
+
   render() {
     if (this.state.data) {
-      let links = [];
-      for (let i = 1; i <= 5; i += 1) {
-        links.push(this.state.data[`link${i}`].url)
-      }
-      return ( 
-        <ul>
-          {links.map(function(link, i){
-            return <li key={i}>{link}</li>;
-          })}
-        </ul>)
+     return this.renderLinks();
     } else {
       return <h1>working on stuff...</h1>
     }
