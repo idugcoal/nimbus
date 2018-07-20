@@ -3,7 +3,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 240px 1fr;
-  grid-template-rows: 140px 1fr 1fr 1fr;
+  grid-template-rows: 140px 800px 800px 400px;
   grid-template-areas:
     "nav titlebar"
     "nav hero"
@@ -12,41 +12,47 @@
 }
 
 .nav {
-  border: 1px solid black;
   grid-area: nav;
 }
 
-.titlebar {
-  border: 1px solid black;
+.titlebar-container {
   grid-area: titlebar;
- /* display: grid;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas: 
-    "tba tbb tbc tbd";*/
+}
+
+.titlebar-article {
+  display: grid;
+  height: 140px;
+  width: 250px;
+}
+
+.titlebar-title {
+  font-size: 12px;
+}
+
+.titlebar-date {
+  font-size: 10px;
+}
+
+.titlebar-image {
+  height: 70px;
+  width: 70px;
 }
 
 .hero {
-  border: 1px solid black;
   grid-area: hero;
 }
 
 .blocks {
-  border: 1px solid black;
   grid-area: blocks;
 }
 
-.footer {
-  border: 1px solid black;
+.footer-container {
   grid-area: footer;
 }
 
-.tb1, .tb3 {
-  background-color: red;
-  grid-area: tba;
+.footer-image {
+  height: 400px;
+  width: 3000px;
 }
-
-.tb2, .tb4 {
-  background-color: red;
-  grid-area: tbc;
-}
-

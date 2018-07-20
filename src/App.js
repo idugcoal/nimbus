@@ -13,7 +13,7 @@ import Home from './Home';
 import Page from './Page';
 import Article from './Article';
 
-import './App.css';
+// import './App.css';
 
 const App = (props) => (
   <Router>

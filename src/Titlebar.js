@@ -7,6 +7,10 @@ export default class Titlebar extends React.Component {
     data: null,
     notFound: false,
   }
+  constructor(props) {
+    super(props);
+    this.renderTitlebarArticle = this.renderTitlebarArticle.bind(this);
+  }
 
   componentWillMount() {
     this.fetchArticles();
@@ -24,21 +28,25 @@ export default class Titlebar extends React.Component {
     });
   }
 
-  renderTitleBarArticle(data) {
+  renderTitlebarArticle(data) {
     return (
-      <div className="titlebar-article" key={data.data.uid}>
+      <div className="titlebar-article" key={data.data.title[0].text}>
         <div className="titlebar-title">{data.data.title[0].text}</div>
-        <div className="titlebar-date">{data.data.data}</div>
-        <img src={data.data.image.url} alt="" />
+        <div className="titlebar-date">{data.data.date}</div>
+        <img src={data.data.image.url} alt="" className="titlebar-image" />
       </div>
     );
   }
 
   render() {
     if (this.state.data) {
-      return this.state.data.map((articleData) => {
-        return this.renderTitleBarArticle(articleData)
-      })
+      return (
+        <div className="titlebar-container"> {this.state.data.map((articleData) => 
+          {
+            return this.renderTitlebarArticle(articleData)
+          })}
+        </div>
+      )
     } else {
       return <h1>working on stuff...</h1>
     }
