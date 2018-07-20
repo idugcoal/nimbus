@@ -2,7 +2,7 @@ import React from 'react';
 import Prismic from 'prismic-javascript';
 import './App.css';
 
-export default class Nav extends React.Component {
+export default class Hero extends React.Component {
 
   state = {
     data: null,
@@ -10,15 +10,15 @@ export default class Nav extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchNavData();
+    this.fetchHeroData();
   }
 
-  fetchNavData() {
+  fetchHeroData() {
     const apiEndpoint = 'https://nimbus.cdn.prismic.io/api/v2';
 
     Prismic.api(apiEndpoint).then(api => {
       api.query(
-        Prismic.Predicates.at('document.type', 'navigation'),
+        Prismic.Predicates.at('document.type', 'article'),
       ).then(response => {
         const data = response.results[0].data
         this.setState({ data });
@@ -26,23 +26,16 @@ export default class Nav extends React.Component {
     });
   }
 
-  renderLinks() {
-    let links = [];
-    for (let i = 1; i <= 5; i += 1) {
-      links.push(this.state.data[`link${i}`].url);
-    }
-    return ( 
-      <ul>
-        {links.map((link, i) => {
-          return <li key={i}>{link}</li>;
-        })}
-      </ul>)
-  }
-
   render() {
     if (this.state.data) {
-      console.log(this.state.data.logo.url)
-     return this.renderLinks();
+      console.log(this.state.data.body[0], this.state.data.title[0], this.state.data.image.url)
+      return (
+        <div className="hero-container">
+          <div className="hero-title">{this.state.data.title[0].text}</div>
+          <div className="hero-body">{this.state.data.body[0].text}</div>
+          <img src={this.state.data.image.url} alt="" className="hero-image" />
+        </div>
+      );
     } else {
       return <h1>Loading...</h1>
     }

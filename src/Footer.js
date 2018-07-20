@@ -26,7 +26,6 @@ export default class Footer extends React.Component {
 
   render() {
     if (this.state.data) {
-      console.log('footer', this.state.data)
       return (
         <div className="footer-container"> {this.state.data.map((data) => 
           {

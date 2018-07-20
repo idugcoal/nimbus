@@ -13,6 +13,7 @@
 
 .nav {
   grid-area: nav;
+  border-right: 1px solid grey;
 }
 
 .titlebar-container {
@@ -40,8 +41,13 @@
   width: 70px;
 }
 
-.hero {
+.hero-container {
   grid-area: hero;
+}
+
+.hero-image {
+  height: 800px;
+  width: 400px;
 }
 
 .blocks {

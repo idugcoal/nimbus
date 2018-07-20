@@ -41,9 +41,12 @@ export default class Titlebar extends React.Component {
   render() {
     if (this.state.data) {
       return (
-        <div className="titlebar-container"> {this.state.data.map((articleData) => 
+        <div className="titlebar-container"> {this.state.data.map((articleData, index) => 
           {
-            return this.renderTitlebarArticle(articleData)
+            if (index < 4) {
+              return this.renderTitlebarArticle(articleData)
+            }
+            return null
           })}
         </div>
       )
