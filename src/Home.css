@@ -11,7 +11,7 @@
     "footer footer";
 }
 
-.nav {
+.nav-container {
   grid-area: nav;
   border-right: 1px solid grey;
 }
@@ -50,8 +50,21 @@
   width: 400px;
 }
 
-.blocks {
+.blocks-container {
   grid-area: blocks;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.blocks-article {
+  display: grid;
+  height: 800px;
+  width: 400px;
+}
+
+.blocks-image {
+  height: 200px;
+  width: 400px;
 }
 
 .footer-container {

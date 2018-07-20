@@ -3,6 +3,7 @@ import Nav from './Nav';
 import Titlebar from './Titlebar';
 import Footer from './Footer';
 import Hero from './Hero';
+import Blocks from './Blocks';
 import './Home.css';
 
 export default class Home extends React.Component {
@@ -12,7 +13,7 @@ export default class Home extends React.Component {
         <Nav className="nav"></Nav>
         <Titlebar className="titlebar"></Titlebar>
         <Hero className="hero"></Hero>
-        <div className="blocks"></div>
+        <Blocks className="blocks"></Blocks>
         <Footer className="footer"></Footer>
       </div>
     );

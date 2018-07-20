@@ -32,20 +32,22 @@ export default class Nav extends React.Component {
       links.push(this.state.data[`link${i}`].url);
     }
     return ( 
-      <ul>
-        {links.map((link, i) => {
-          return <li key={i}>{link}</li>;
-        })}
-      </ul>)
+      <div className="nav-container">
+      <img src={this.state.data.logo.url} alt="" className="nav-image" />
+        <ul>
+          {links.map((link, i) => {
+            return <li key={i}>{link}</li>;
+          })}
+        </ul>
+      </div>
+    );
   }
 
   render() {
     if (this.state.data) {
-      console.log(this.state.data.logo.url)
      return this.renderLinks();
     } else {
       return <h1>Loading...</h1>
     }
-}
-// <img src={this.state.data.logo.url} alt="" className="nav-image" />
+  }
 }
