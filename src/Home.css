@@ -13,7 +13,7 @@
 
 .nav-container {
   grid-area: nav;
-  border-right: 1px solid grey;
+  border-right: 1px solid #E8E8E8;
 }
 
 .titlebar-container {
@@ -26,6 +26,7 @@
   display: grid;
   height: 140px;
   width: 250px;
+  border-right: 1px solid #E8E8E8;
 }
 
 .titlebar-title {

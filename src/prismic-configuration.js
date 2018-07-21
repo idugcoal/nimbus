@@ -1,6 +1,6 @@
 export default {
 
-  apiEndpoint: 'https://nimbus.prismic.io/api/v2',
+  apiEndpoint: 'https://nimbus.cdn.prismic.io/api/v2',
 
   // -- Access token if the Master is not open
   // accessToken: 'xxxxxx',
