@@ -26,6 +26,7 @@
   display: grid;
   height: 140px;
   border-right: 1px solid #E8E8E8;
+  border-bottom: 1px solid #E8E8E8;
 }
 
 .titlebar-title {
@@ -43,11 +44,25 @@
 
 .hero-container {
   grid-area: hero;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "body image";
+}
+
+.hero-text {
+  grid-area: body;
+}
+
+.hero-title {
+  font-size: 24px;
+}
+
+.hero-body {
+  margin-top: 24px;
 }
 
 .hero-image {
-  height: 800px;
-  width: 400px;
+  grid-area: image;
 }
 
 .blocks-container {

@@ -20,7 +20,7 @@ export default class Hero extends React.Component {
       api.query(
         Prismic.Predicates.at('document.type', 'article'),
       ).then(response => {
-        const data = response.results[0].data
+        const data = response.results[6].data
         this.setState({ data });
       });
     });
@@ -31,8 +31,10 @@ export default class Hero extends React.Component {
       console.log(this.state.data.body[0], this.state.data.title[0], this.state.data.image.url)
       return (
         <div className="hero-container">
-          <div className="hero-title">{this.state.data.title[0].text}</div>
-          <div className="hero-body">{this.state.data.body[0].text}</div>
+          <div className="hero-text">
+            <div className="hero-title">{this.state.data.title[0].text}</div>
+            <div className="hero-body">{this.state.data.body[0].text}</div>
+          </div>
           <img src={this.state.data.image.url} alt="" className="hero-image" />
         </div>
       );
